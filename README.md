@@ -8,6 +8,9 @@ This README explains how to run the project locally, how to play, available sett
 
 ## Quick start
 
+You can access the game at the following link
+https://cursorhackathon.vercel.app/
+
 Install dependencies and start the development server:
 
 ```powershell
