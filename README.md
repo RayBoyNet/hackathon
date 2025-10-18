@@ -1,6 +1,6 @@
 # Monkey Climb 
 
-![Thumbnail](./images/Monkey Climb Thumbnail.PNG)
+![Thumbnail](Monkey Climb Thumbnail.PNG)
 
 Welcome to Monkey Climb — a small, AI-generated vertical platformer built with Next.js and TypeScript. The game runs in the browser using a canvas-based renderer. The objective is to climb as high as possible, collect items, unlock a double-jump power-up, and reach the flag to win.
 
