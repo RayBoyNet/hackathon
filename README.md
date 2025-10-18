@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monkey Climb — README
 
-## Getting Started
+Welcome to Monkey Climb — a small, AI-generated vertical platformer built with Next.js and TypeScript. The game runs in the browser using a canvas-based renderer. The objective is to climb as high as possible, collect items, unlock a double-jump power-up, and reach the flag to win.
 
-First, run the development server:
+This README explains how to run the project locally, how to play, available settings, and troubleshooting tips.
 
-```bash
+## Quick start
+
+Install dependencies and start the development server:
+
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm run build
+npm run start
+```
 
-## Learn More
+Note: this project uses Tailwind CSS and the Next.js app directory. Node.js (16+) is recommended.
 
-To learn more about Next.js, take a look at the following resources:
+## How to play
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Objective: Climb upward by jumping from platform to platform and reach the goal flag at the top.
+- Collect coins and other collectibles to increase your score. A hidden orb gives you the double-jump ability.
+- Avoid enemies — touching an enemy or falling off-screen will reset your position.
+- Once you reach the flag, the game ends in a Victory screen with your score.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Gameplay mechanics
 
-## Deploy on Vercel
+- Movement: simple physics with gravity and horizontal movement.
+- Jumping: a single jump is available by default. Finding the hidden orb unlocks a permanent double-jump for that run.
+- Moving platforms: some platforms move horizontally and can help or hinder your climb.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tips
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Use short horizontal taps to adjust position on moving platforms.
+- Watch for question-mark indicators on platforms — they hide the orb or other surprises.
+
+## Controls
+
+- Keyboard:
+  - Move left: Arrow Left or A
+  - Move right: Arrow Right or D
+  - Jump: Space, Arrow Up, or W
+  - Menu / Pause: click Menu in the UI
+
+The on-screen arcade D-pad and action buttons visually reflect current key presses.
+
+## Settings (in-game)
+
+Open the Settings screen from the main menu to configure the following:
+
+- Character: choose between the Monkey or Block avatar (visual only).
+- Difficulty: Easy / Medium / Hard — controls level generation (number of platforms, gaps, moving platforms).
+- Theme: Forest, Cave, Desert, Snow — changes background and platform colors.
+- Sound Effects: toggle simple procedural sound effects (Web Audio Oscillator) on/off.
+
+Settings notes
+
+- Difficulty affects procedural generation (platform count, gap sizes, moving platforms). Hard increases challenge.
+- Sound uses the Web Audio API. Some browsers require user interaction to enable audio — toggle sound in Settings and try playing to allow the AudioContext to start.
+
+## UI elements
+
+- Main Menu: Play Game, Settings, Quit.
+- Settings: change character, difficulty, theme, and sound.
+- In-game HUD (sidebar): Score, Height (meters), character selector shortcut, and the Agent Log (shows level-generation messages).
+- Victory modal: appears when you reach the flag with score and Play Again.
+
+## Development & troubleshooting
+
+- Project structure: the main game component is `src/app/ClimbingMonkey.tsx` and the page entry is `src/app/page.tsx`.
+- If the canvas is blank:
+  - Make sure the dev server is running and the page is loaded at http://localhost:3000.
+  - Check the browser console for errors (especially around Web Audio or canvas context creation).
+- Audio troubles:
+  - Web Audio may be blocked until a user gesture occurs in some browsers. Toggle Sound Effects in the Settings or press Play to allow audio.
+  - If AudioContext fails to initialize, sound is silently disabled and gameplay continues normally.
+
+## Contributing
+
+If you'd like to contribute improvements (gameplay, UI polish, or tests):
+
+1. Fork the repository and create a feature branch.
+2. Make changes and run the app locally to verify behavior.
+3. Open a pull request with a clear description and screenshots or recordings if UI changes are involved.
+
+Some suggested improvements:
+
+- Add touch controls for mobile playability.
+- Improve audio assets (replace procedural tones with short samples).
+- Add unit/integration tests for level generation and physics.
+
+## License
+
+This project is provided as-is for demo and hackathon purposes. Modify and use the code as you like.
